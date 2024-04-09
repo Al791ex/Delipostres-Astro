@@ -1,3 +1,7 @@
+"engines": {
+  "node": ">=18.0.0"
+},
+
 name: Azure Static Web Apps CI/CD
 
 on:
