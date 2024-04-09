@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../../public/data.json';
+import '../../assets/scss/astro-ecommerce.scss';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import CardCategory from '../components/products/cardCategory';
+import ShoppingCart from '../components/cart/shoppingCart';
+import ShoppingCart2 from '../components/cart/shoppingCart2';
+import PromoSectionLarge from '../components/promo/promoSectionLarge';
+import CheckoutOrderSummary from '../components/checkout/checkoutOrderSummary';
+import CheckoutMultiStep from '../components/checkout/checkoutMultiStep';
+import OrderSummaries from '../components/order/orderSummaries';
+import OrderHistory from '../components/order/orderHistory';
+
+
+let cartItems: any[] = [];
+data.shoppingCart.map((id: string) => 
+  data.products.filter((x: any) => x.id == id).map((x: any) => cartItems.push(x))
+);
+let cartItems2: any[] = [];
+data.shoppingCart2.map((id: string) => 
+  data.products.filter((x: any) => x.id == id).map((x: any) => cartItems2.push(x))
+);
+
+let orderProducts: any[] = [];
+
+data.orders[0].products.forEach((productDetails: any) => {
+  data.products.forEach((product: any) => {
+    if (product.id == productDetails.id) {
+      orderProducts.push(product);
+    }
+  });
+});
+
+let orderHistoryProducts = new Set();
+
+data.orders.forEach((order: any) => {
+  order.products.forEach((productDetails: any) => {
+    data.products.forEach((product: any) => {
+      if (product.id == productDetails.id) {
+        orderHistoryProducts.add(product);
+      }
+    });
+  });
+});
+
+---
+
+<script>
+  function toggleHeart(e: Event) {
+    const target = e.target as HTMLElement;
+    target.classList.toggle('fas');
+    target.classList.toggle('far');
+    target.classList.toggle('text-danger');
+  }
+  
+  const heartElement = document.getElementById('heart1');
+  if (heartElement) {
+    heartElement.addEventListener("click", toggleHeart);
+  }
+</script>
+
+<Layout title="Delipostres">
+	<main>
+    <Navbar />
+    <div class="container mt-5">
+      
+
+      <div class="row mb-8">
+        <div class="d-block text-center mb-5">
+          <h3>compras por catagoria</h3>
+          <a class="text-dark font-weight-bold" href="#">Busca todas las categorías &#62;</a>
+        </div>
+        {data.products.slice(0, 4).map((category: any) => 
+          <div class="col-md-6 col-lg-3">
+            <CardCategory
+              thumb_src={category.thumb_src}
+              title={category.title}
+              collection=""
+              classList=""
+              cta=""
+            />
+          </div>
+        )}
+      </div>
+
+
+      <div class="row mb-5">
+        <div class="d-block text-center mb-5">
+          <h3>compras por catagoria</h3>
+          <a class="text-dark font-weight-bold" href="#"> Busca todas las categorías &#62;</a>
+        </div>
+        <div class="col-md-6">
+            <CardCategory
+              thumb_src=""
+              title=""
+              collection=""
+              classList="h-100"
+              cta=""
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="mb-4">
+              <CardCategory
+                thumb_src=""
+                title=""
+                collection=""
+                classList=""
+                cta=""
+              />
+            </div>
+            <div class="">
+              <CardCategory
+                thumb_src=""
+                title=""
+                collection=""
+                classList=""
+                cta=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="my-10">
+        <h3>Carrito</h3>
+        <ShoppingCart
+          products = {cartItems}
+        />
+      </div>
+
+      <div class="my-10">
+        <h3>Carrito2</h3>
+        <ShoppingCart2
+          products = {cartItems2}
+        />
+      </div>
+
+
+      <div class="my-10">
+        <h3 class="mt-5">Promo Sections</h3>
+        <p class="text-body">With fading background image and testimonials</p>
+        <PromoSectionLarge 
+          title={data.products[0].title}
+          full_description="The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now to be okay to be the greatest you. Would you believe in what you believe in, if you were the only one who believed it?"  
+          pageHeaderBgImg={"https://images.unsplash.com/photo-1525904097878-94fb15835963?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"} 
+          pageHeaderMinVh="50vh"
+          pageHeaderRadius="1rem"
+        />
+      </div>
+
+      <div class="my-10">
+        <h3>Checkout Forms</h3>
+        <p>Split with order summary</p>
+        <CheckoutOrderSummary 
+          products={cartItems}
+          textColor="black"
+        />
+      </div>
+
+      <div class="my-10">
+        <h3>Checkout Forms</h3>
+        <p>SWith order summary sidebar</p>
+        <CheckoutMultiStep
+          products = {cartItems2}
+        />
+      </div>
+
+      
+            <div class="my-10">
+              <h3 class="mt-5">Order Summaries</h3>
+              <p class="text-body">With order summary sidebar</p>
+              <OrderSummaries order={data.orders[0]} products={orderProducts} />
+            </div>
+
+            <div class="my-10">
+              <OrderHistory orders = {data.orders} products={orderHistoryProducts} />
+            </div>
+
+      
+      <Footer />
+    </div>
+	</main>
+</Layout>

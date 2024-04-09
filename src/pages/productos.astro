@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../../public/data.json';
+import '../../assets/scss/astro-ecommerce.scss';
+import Navbar from '../components/navbar';
+import CardProduct from '../components/products/cardProduct';
+import Footer from '../components/footer';
+
+---
+
+<Layout title="Productos">
+	<main>
+    <Navbar />
+    <div class="container mt-5">   
+
+      <div class="row">
+        <h1 class="mb-4">Nuestros Productos</h5>
+        <div id="DGalletas">
+          <h2>Galletas</h2>
+        </div>
+  
+        <hr class="dark horizontal my-2" />
+  
+        <div class="container mt-3"></div>
+        <div class="row">
+          {data.products.filter((product) => product.category === "Galletas").map((product) => (
+            <div class="col-md-6 col-lg-3">
+          <CardProduct 
+            id={product.id}
+            category={product.category}
+            sizes={product.sizes}
+            thumb_src={product.thumb_src}
+            thumb_alt={product.thumb_alt}
+            color={product.color}
+            title={product.title}
+            price={product.price}
+            position="left"
+          />
+            </div>
+          ))}
+        </div>
+        
+        <div id="DTortas">
+          <h2>Tortas</h2>
+        </div>
+  
+        <hr class="dark horizontal my-2" />
+  
+        <div class="container mt-3"></div>
+        <div class="row">
+          {data.products.filter((product) => product.category === "Tortas").map((product) => (
+            <div class="col-md-6 col-lg-3">
+          <CardProduct 
+            id={product.id}
+            category={product.category}
+            sizes={product.sizes}
+            thumb_src={product.thumb_src}
+            thumb_alt={product.thumb_alt}
+            color={product.color}
+            title={product.title}
+            price={product.price}
+            position="left"
+          />
+            </div>
+          ))}
+        </div>
+        
+        <div id="DPostres">
+          <h2>Postres Tradicionales</h2>
+        </div>
+  
+        <hr class="dark horizontal my-2" />
+  
+        <div class="container mt-3"></div>
+        <div class="row">
+          {data.products.filter((product) => product.category === "Postres Tradicionales").map((product) => (
+            <div class="col-md-6 col-lg-3">
+          <CardProduct 
+            id={product.id}
+            category={product.category}
+            sizes={product.sizes}
+            thumb_src={product.thumb_src}
+            thumb_alt={product.thumb_alt}
+            color={product.color}
+            title={product.title}
+            price={product.price}
+            position="left"
+          />
+            </div>
+          ))}
+        </div>
+        
+      </div>
+
+      <Footer />
+      
+    </div>
+  </main>
+
+</Layout>
