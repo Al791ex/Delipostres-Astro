@@ -1,0 +1,1 @@
+import"./hoisted.1b4b5208.js";let o;async function e(){const{Map:t}=await google.maps.importLibrary("maps");var a={lat:10.6698902,lng:-71.6160329};o=new t(document.getElementById("map"),{center:a,zoom:15}),new google.maps.Marker({position:a,map:o})}e();
