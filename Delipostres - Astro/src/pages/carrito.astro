@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../../public/data.json';
+import '../../assets/scss/astro-ecommerce.scss';
+import Navbar from '../components/navbar';
+import CardProduct from '../components/products/cardProduct';
+import ShoppingCart from '../components/cart/shoppingCart';
+import Footer from '../components/footer';
+
+let cartItems: any[] = [];
+data.shoppingCart.map((id: string) => 
+  data.products.filter((x: any) => x.id == id).map((x: any) => cartItems.push(x))
+);
+---
+
+<Layout title="Carrito de compras">
+	<main>
+    <Navbar />
+
+    <ShoppingCart products = {cartItems}/>
+    
+    <div class="container mt-5">
+      <div class="row">
+        <h5 class="mb-4">También te podría gustar</h5>
+        {data.products
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 4)
+          .map(product => 
+            <div class="col-md-6 col-lg-3">
+              <CardProduct 
+          id={product.id}
+          category={product.category}
+          thumb_src={product.thumb_src}
+          thumb_alt={product.thumb_alt}
+          color={product.color}
+          title={product.title}
+          price={product.price}
+          position="left"
+              />
+            </div>
+          )}
+      </div>
+      <hr class="dark horizontal my-5" />
+      <Footer/>
+    </div>
+  </main>
+
+</Layout>

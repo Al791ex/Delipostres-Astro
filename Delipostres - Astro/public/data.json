@@ -1,0 +1,251 @@
+{
+  "products": [
+    {
+      "id": "00", 
+      "thumb_src": "/ImagesDeli/Torta tres leches.jpg",
+      "thumb_alt": "Torta de Tres Leches",
+      "color": "Deliciosa Torta de Tres Leches",
+      "title": "Torta De Tres Leches",
+      "price": 25,
+      "full_description": "Torta de chocolate derretido con mousse de Nutella decorada con chips de chocolate negro. Rinde 12 Porciones. Molde de 30 Cm.",
+      "size": "Small",
+      "category": "Tortas",
+      "stock": true
+    },
+
+
+    {
+      "id": "02",
+      "thumb_src": "/ImagesDeli/Torta de vainilla rellena.jpg",
+      "thumb_alt": "Torta de vainilla rellena",
+      "color": "Torta Con Crema pastelera y Vainilla",
+      "title": "Torta de Vainilla rellena",
+      "price": 15,
+      "full_description": "Un clásico irresistible con suaves capas de bizcocho de vainilla y un delicioso relleno cremoso. Perfecta para cualquier ocasión especial.",
+      "size": "Medium",
+      "category": "Tortas",
+      "stock": true
+    },
+
+
+    {
+      "id": "03",
+      "thumb_src": "/ImagesDeli/Torta de chocolate.jpg",
+      "thumb_alt": "Torta de chocolate",
+      "color": "Explosiva Torta de Chocolate ",
+      "title": "Torta de Chocolate",
+      "full_description": "Una delicia tentadora con capas de bizcocho de chocolate húmedo y un decadente relleno de crema de chocolate. Un placer indulgente para los amantes del cacao.",
+      "price": 26,
+      "size": "Large",
+      "category": "Tortas",
+      "stock": true
+    },
+
+   
+    {
+      "id": "04",
+      "thumb_src": "ImagesDeli/RFB-3003-4-tortapinata.webp",
+      "thumb_alt": "Torta piñata",
+      "color": "Disfruta de una sorpresa de sabores",
+      "title": "Torta Piñata",
+      "price": 25,
+      "full_description": "Degusta nuestra deliciosa Torta explosiva piñata, siendo la favorita de los niños y padres.",
+      "category": "Tortas",
+      "stock": true
+    },
+
+    {
+      "id": "05",
+      "thumb_src": "/ImagesDeli/Galleta Choco Explosion.jpg",
+      "thumb_alt": "Galleta Choco explosion",
+      "color": "Disfruta del sabor de chocolate",
+      "title": "Galleta Choco Explosión",
+      "price": 1,
+      "full_description": "Galleta de 115gr con chocolate chips.  Intensa y tentadora, con un interior suave y un sabor a chocolate puro. Un placer indulgente en cada bocado.",
+      "size": "Medium",
+      "category": "Galletas",
+      "stock": true
+    },
+
+    {
+      "id": "06",
+      "thumb_src": "/ImagesDeli/Galleta de avena dulce.jpeg",
+      "thumb_alt": "Galleta Red",
+      "color": "Excelentes galletas de Avena",
+      "title": "Galleta de Avena Dulce",
+      "price": 1,
+      "full_description": "Galleta de115 gr crujiente por fuera, suave por dentro. Elaborada con ingredientes naturales para un sabor y textura inigualables.",
+      "size": "Medium",
+      "category": "Galletas",
+      "stock": true
+    },
+
+    {
+      "id": "07",
+      "thumb_src": "/ImagesDeli/Galleta-Churro-arequipe (1).jpg",
+      "thumb_alt": "Galleta Red",
+      "color": "Galleta Churro Arequipe",
+      "title": "Galleta Churro Arequipe",
+      "price": 1,
+      "full_description": "Galleta caliente rellena con centro de arequipe y cubierta de azucar canela.",
+      "size": "Medium",
+      "category": "Galletas",
+      "stock": false
+    },
+
+    {
+      "id": "08",
+      "thumb_src": "/ImagesDeli/Gallete red Velvet.jpg",
+      "thumb_alt": "Galleta Red",
+      "color": "Galleta Caliente Red Velvet",
+      "title": "Galleta Red Velvet",
+      "price": 1,
+      "full_description": "Galleta caliente de 115 gr Delicada y suave, con un toque de cacao y un irresistible color rojo. Una experiencia celestial en cada mordisco.",
+      "size": "Medium",
+      "category": "Galletas",
+      "stock": false
+    },
+
+    {
+      "id": "09",
+      "thumb_src": "/ImagesDeli/Quesillo.jpg",
+      "thumb_alt": "Porcion de quesillo",
+      "color": "Riquisimo y blandisimo quesillo",
+      "title": "Porción De Quesillo",
+      "price": 2,
+      "full_description": "Porción de quesillo, elaborada con una mezcla suave de huevos, leche y caramelo, te ofrece un postre tradicional con un toque casero irresistible. ",
+      "size": "Medium",
+      "category": "Postres Tradicionales",
+      "stock": false
+    },
+
+    {
+      "id": "10",
+      "thumb_src": "/ImagesDeli/Marquesa de chocolate.jpeg",
+      "thumb_alt": "Porcion de quesillo",
+      "color": "Suculenta marquesa de chocolate",
+      "title": "Porción de Marquesa",
+      "price": 2,
+      "full_description": "150 Gr de Deliciosa combinación de capas de galletas de chocolate y una rica crema de cacao en su superficie. ",
+      "size": "Medium",
+      "category": "Postres Tradicionales",
+      "stock": false
+    },
+
+    {
+      "id": "11",
+      "thumb_src": "/ImagesDeli/Arrozconleche.jpg",
+      "thumb_alt": "Porcion de arroz con leche",
+      "color": "Porción Arroz con leche",
+      "title": "Porción Arroz con leche",
+      "price": 2,
+      "full_description": "150 gr de Arroz cocido en leche con canela y vainilla para un postre reconfortante y aromático.",
+      "size": "Medium",
+      "category": "Postres Tradicionales",
+      "stock": false
+    },
+
+    {
+      "id": "12",
+      "thumb_src": "/ImagesDeli/PalmeritaC.jpg",
+      "thumb_alt": "Palmeritas",
+      "color": "Deliciosas palmeritas de chocolate",
+      "title": "Palmeritas de chocolate",
+      "price": 1,
+      "full_description": "25 Galletas de 50gr cada una hojaldradas de mantequilla y azúcar para un bocado crujiente y dulce.",
+      "category": "Postres Tradicionales",
+      "stock": false
+    }
+
+  ],
+  
+    
+  
+  "orders": [
+    {
+      "orderNumber": 23791,
+      "products": [
+        {
+          "id": "01",
+          "status": "Processed",
+          "quantity": 1,
+          "dateModified": "March 23, 2023"
+        },
+        {
+          "id": "02",
+          "status": "Delivered",
+          "quantity": 3,
+          "dateModified": "June 28, 2023"
+        }
+      ],
+      "payment": {
+        "cardNumber": "0042",
+        "expiringDate": "06/26"
+      },
+      "date": "March 23, 2023",
+      "address": "362 Ridgewood, Alaska 99669, USA",
+      "email": "michael@email.com",
+      "phoneNumber": "(808) 791-6935"
+    },
+    {
+      "orderNumber": "WB2341",
+      "products": [
+        {
+          "id": "03",
+          "status": "Order Placed",
+          "quantity": 1,
+          "dateModified": "March 23, 2023"
+        }
+      ],
+      "payment": {
+        "cardNumber": "4119",
+        "expiringDate": "06/26"
+      },
+      "date": "March 28, 2023",
+      "address": "362 Ridgewood Dr, Soldotna, Alaska 99669, USA",
+      "email": "john@email.com",
+      "phoneNumber": "(307) 612-7721"
+    },
+    {
+      "orderNumber": "010110",
+      "products": [
+        {
+          "id": "04",
+          "status": "Order Placed",
+          "quantity": 1,
+          "dateModified": "Sep 09, 2023"
+        },
+        {
+          "id": "01",
+          "status": "Shipped",
+          "quantity": 1,
+          "dateModified": "Sep 12, 2023"
+        },
+        {
+          "id": "02",
+          "status": "Delivered",
+          "quantity": 1,
+          "dateModified": "Sep 13, 2023"
+        }
+      ],
+      "payment": {
+        "cardNumber": "5290",
+        "expiringDate": "11/27"
+      },
+      "date": "Sep 07, 2023",
+      "address": "362 Ridgewood, Alaska 99669, USA",
+      "email": "doe@email.com",
+      "phoneNumber": "(307) 682-8835"
+    }
+  ],
+  "shoppingCart": [
+    "01", 
+    "02", 
+    "03"
+  ],
+  "shoppingCart2": [ 
+    "02", 
+    "03",
+    "04"
+  ]
+}
