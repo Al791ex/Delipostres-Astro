@@ -8,36 +8,6 @@
     Astro
     axios 
 
- 
- Python (usar pip)
-    
-    Django==5.0.1 o cualquiera sirve creo
-    pip install mysqlclient (Para usar MYSQL)
-    djangorestframework
-    django-cors-headers
-    coreapi
-    pip install django-jazzmin y cambien el base.html que les pase por tlg
-    pip install fontawesomefree
-    pip install mysql-connector-python (numpy si no lo tienes)
-    pip install "django-phonenumber-field[phonenumberslite]"
-    delipostres-whatsappapi.azurewebsites.net
-    delipostres.azurewebsites.net
-|--- Informacion ---|
-
-MySQL (+)-> Agregar conexion SQL
-
-    Hostname: delipostres.mysql.database.azure.com
-    Username: deliadmin
-    Password: Oropeza$
-    Nombre_BaseDeDatos=delipostres
-    SSL: if available
-
-Django - Admin Panel
-    
-    User: deliadmin
-    Password: oropeza
-    Email: Delipos3Mcbo@gmail.com
-
 RESTFUL API URLS:
 
     {
