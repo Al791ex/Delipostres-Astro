@@ -11,11 +11,7 @@ const Navbar = () => {
           </span>
         </button>
         <div className="collapse navbar-collapse" id="navigation">
-          <ul className="navbar-nav ms-auto">
-          <a className="carrito" href="/delipostres/carrito/">
-                <img src="/public/images/shoppingcart_80945.jpg" alt="" />  
-                
-              </a>  
+          <ul className="navbar-nav ms-auto">  
             <li className="nav-item dropdown">
               <a className="nav-link text-dark dropdown-toggle font-weight-bold d-flex align-items-center me-2 " aria-current="page" id="pagesExample" data-bs-toggle="dropdown" aria-expanded="false">
                 Páginas
@@ -25,7 +21,6 @@ const Navbar = () => {
               <ul className="dropdown-menu" aria-labelledby="pagesExample">
                 <li><a className="dropdown-item" href="/delipostres/">Pagina principal</a></li>
                 <li><a className="dropdown-item" href="/delipostres/productos/">Productos</a></li>
-                <li><a className="dropdown-item" href="/delipostres/pago/">Pago</a></li>
               </ul>
               
               
