@@ -22,8 +22,6 @@ const Navbar = () => {
                 <li><a className="dropdown-item" href="/delipostres/">Pagina principal</a></li>
                 <li><a className="dropdown-item" href="/delipostres/productos/">Productos</a></li>
               </ul>
-              
-              
             
             </li>
             
