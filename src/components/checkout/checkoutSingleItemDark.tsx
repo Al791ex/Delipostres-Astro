@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { CartContext } from '../../../assets/js/CartContext';
 interface Props {
   thumb_src: string;
   thumb_alt: string;
@@ -14,17 +16,18 @@ export default function CheckoutSingleItem({
   price,
 
 }: Props) {
-
+  const { addToCart, cartItems } = useContext(CartContext);
+  const { removeFromCart } = useContext(CartContext);
   return (
     <>
       <div className="card card-product card-plain d-flex mb-4"> 
         <div className="row">
-          <div className="col-4 col-md-2">
-            <img className="w-100 max-height-100 rounded-3" src={`${import.meta.env.BASE_URL}${thumb_src}`} alt={thumb_alt} />
+          <div className="col-4 col-md-0">
+            <img className="w-105 max-height-150 rounded-3" src={`${import.meta.env.BASE_URL}${thumb_src}`} alt={thumb_alt} />
           </div>
           <div className="col-5 col-md-6">
-            <h5 className="text-base mb-1">{title}</h5>
-            <h6 className="text-sm font-weight-bold mb-0">${price.toLocaleString()}</h6>
+            <h2 className="text-base mb-1">{title}</h2>
+            <h4 className="text-sm font-weight-bold mb-0">${price.toLocaleString()}</h4>
             <p className="text-sm mb-0 opacity-8">{color}</p>
           </div>
           <div className="col-2">

@@ -1,6 +1,6 @@
-import ProductSizes from './productSizes';
-import ProductCartItem from '../cart/productCartItem';
 import { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { CartContext } from '../../../assets/js/CartContext';
 
 interface Props {
   id: string; // Asegúrate de incluir el id
@@ -28,6 +28,7 @@ export default function CardProduct({
   full_description,
 }: Props) {
 
+
   const classList = "card-body " + "text-" + position;
 
   // Usar el id para generar identificadores únicos para el modal y el botón
@@ -35,6 +36,7 @@ export default function CardProduct({
   const modalTarget = `#${modalId}`;
 
   const [cartItems, setCartItems] = useState<Props[]>([]);
+  const { addToCart, removeFromCart } = useContext(CartContext);
 
   const handleRemoveFromCart = (id: string) => {
     setCartItems(cartItems.filter((item: Props) => item.id !== id));
@@ -126,15 +128,13 @@ export default function CardProduct({
                     
                     <button
                       className="btn btn-dark btn-lg w-100"
-                      onClick={() => handleAddToCart({
-                        id, thumb_src, thumb_alt, title, price, color, position, category, stock,full_description
-                      })}
+                      onClick={() => addToCart({ id, thumb_src, thumb_alt, title, price, color, position, category, stock, full_description, quantity })}
                     >
                       Añadir al carrito
                     </button>
                     <button
                       className="btn btn-danger btn-lg w-100 mt1"
-                      onClick={() => handleRemoveFromCart(id)}
+                      onClick={() => removeFromCart(id)}
                     >
                       Quitar del carrito
                     </button>

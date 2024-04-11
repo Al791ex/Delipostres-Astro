@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../../../assets/js/CartContext';
+import React, { useContext, useState } from 'react';
 
-interface Props {
-  id: string;
-  thumb_src: string;
-  thumb_alt: string;
-  title: string;
-  color: string;
-  price: number;
-  stock: boolean;
-  subtotal: number;
-  onQuantityChange: (newQuantity: number) => void; // Función para comunicar cambios en la cantidad
+type Props = {
+  id: number,
+  thumb_src: string,
+  thumb_alt: string,
+  title: string,
+  color: string,
+  price: number,
+  stock: boolean
 }
 
 export default function ProductCartItem({
@@ -20,25 +20,23 @@ export default function ProductCartItem({
   color,
   price,
   stock,
-  subtotal,
-  onQuantityChange,
 }: Props) {
-  const [quantity, setQuantity] = useState(1); // Estado local para controlar la cantidad
-
-  useEffect(() => {
-    onQuantityChange(quantity); // Llamar a onQuantityChange cuando la cantidad cambie
-  }, [quantity, onQuantityChange]);
+  const [quantity, setQuantity] = useState(1);
+  const { updateCartItem, removeFromCart } = useContext(CartContext); // Asume que existe una función removeFromCart
 
   const handleQuantityInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
     if (!isNaN(newQuantity) && newQuantity >= 0) {
-      setQuantity(newQuantity); // Actualizar la cantidad
+      setQuantity(newQuantity);
+      updateCartItem(id, newQuantity);
     }
   };
 
-  const calculateSubtotal = () => {
-    return price * quantity; // Calcular el subtotal dinámicamente
+  const handleRemoveFromCart = () => {
+    removeFromCart(id);
   };
+
+  const calculateSubtotal = () => price * quantity;
 
   return (
     <>
@@ -50,6 +48,9 @@ export default function ProductCartItem({
             <p className="pe-3 mb-0">{color}</p>
           </div>
           <div className="d-flex align-items-center mt-6">
+            <button className="btn btn-danger mt-2" onClick={handleRemoveFromCart()}>
+              Quitar del carrito
+            </button>
             {stock ? (
               <>
                 <i className="fas fa-check text-lg text-success"></i>
@@ -66,7 +67,6 @@ export default function ProductCartItem({
         <div className="w-40 w-md-15 mt-4 mt-md-0">
           <input
             type="number"
-            min={0}
             value={quantity}
             onChange={handleQuantityInputChange}
             className="form-control"

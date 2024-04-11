@@ -1,34 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import ProductCartItem from './productCartItem';
+import { CartContext } from '../../../assets/js/CartContext';
+import React, { createContext, useContext, useState } from 'react';
 
-interface Props {
-  products: {
-    id: string;
-    thumb_src: string;
-    thumb_alt: string;
-    color: string;
-    title: string;
-    price: number;
-    subtotal:number;
-    onQuantityChange: (newQuantity: number) => void;
-  }[];
-}
+export default function ShoppingCart() {
+  const { cartItems, removeFromCart, updateCartItem } = useContext(CartContext);
 
-export default function ShoppingCart({ products }: Props) {
-  const [cartItems, setCartItems] = useState<(typeof products[number] & { quantity: number })[]>(
-    products.map((product) => ({ ...product, quantity: 1 }))
+  let TotalCheckout = cartItems.reduce((accumulator, currentItem) =>
+    accumulator + currentItem.price * currentItem.quantity, 0
   );
-
-  const handleRemoveFromCart = (id: string) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
-  const handleQuantityChange = (id: string, newQuantity: number) => {
-    const updatedCart = cartItems.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item));
-    setCartItems(updatedCart);
-  };
-
-  let TotalCheckout = cartItems.reduce((accumulator, currentItem) => accumulator + currentItem.price * currentItem.quantity, 0);
 
   return (
     <div className="container mt-5">
@@ -48,9 +28,6 @@ export default function ShoppingCart({ products }: Props) {
                 subtotal={0}
                 onQuantityChange={(newQuantity) => handleQuantityChange(product.id, newQuantity)}
               />
-              <button className="btn btn-danger mt-2" onClick={() => handleRemoveFromCart(product.id)}>
-                Quitar del carrito
-              </button>
             </div>
           ))}
         </div>

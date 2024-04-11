@@ -2,261 +2,260 @@
 import Layout from '../layouts/Layout.astro';
 import data from '../../public/data.json';
 import '../../assets/scss/astro-ecommerce.scss';
-import CardCategory from '../components/products/cardCategory';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import CardProduct from '../components/products/cardProduct';
 import PromoSectionLarge from '../components/promo/promoSectionLarge';
-import ProductQuickview2 from '../components/products/productQuickview2';
-import ProductQuickview from '../components/products/productQuickview2';
+import { CartProvider } from '../../assets/js/CartContext'; 
+import React, { useContext } from 'react';
 let cartItems: any[] = [];
 ---
 
 
 
 <Layout title="Delipostres">
-  
-  <main>
-    <Navbar />
-    <PromoSectionLarge 
-      title={"DeliPostres"}
-      full_description={data.products[0].full_description ?? ""}
-      pageHeaderBgImg={"../ImagesDeli/Generalportada.jpg"} 
-      pageHeaderMinVh="70vh"
-      pageHeaderRadius="0rem"
-    />
-
-    <div class="container my-3">
-      <div class="d-block text-center mb-5">
-       
-    
-      </div>
-      <div class="row mb-4">
-        <div class="d-block text-center mb-5">
-        <h3>Categorías</h3>
-
-        <a class="text-dark font-weight-bold">Elije Entre Nuestros Deliciosos Postres</a>
-        </div>
-        <div class="row justify-content-center mb-4" >
-
-        <div class="col-md-6 col-lg-3">
-        <a href="#DGalleta"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Galletasportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Galletas</h4><p class="text-white font-weight-bold mb-1">¡Degusta Nuestras Deliciosas Galletas!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0"&gt;</a></div></div></div></a>
-        </div><div class="col-md-6 col-lg-3">
-        <a href="#DTortas"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Tortaportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Tortas</h4><p class="text-white font-weight-bold mb-1">¡Chocolate, Vainilla y Otras Delicias!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0" &gt;</a></div></div></div></a>
-        </div><div class="col-md-6 col-lg-3">
-        <a href="#DPostres"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Postresportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Postres Tradicionales</h4><p class="text-white font-weight-bold mb-1">¡Ser Venezolano Nunca Había Sido Tan Delicioso!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0" &gt;</a></div></div></div></a>
-        </div>
-        </div>
-
-
-
-    <PromoSectionLarge 
-      title="¡Promoción de la semana!"
-      full_description={data.products[4].full_description ?? ""}  
-      pageHeaderBgImg={"../ImagesDeli/Tortapiñata.jpg"} 
-      pageHeaderMinVh="70vh"
-      pageHeaderRadius="5rem"
-    /> <!-- Trae la data con "data.products y el numero dentro del cuadro determina cual producto trae-->
-
-    <div class="row">
-    
-    
+    <CartProvider>
     <main>
-     
-      <div class="container mt-5">   
-        <div class="d-block text-center mb-2">
-  
-        <div class="row">
-          <h1 class="mb-4">Nuestros Productos</h5>
-            <div id="DGalleta">
-              <h2>Galletas</h2>
-            </div>
-      
-    
-          <hr class="dark horizontal my-2" />
-    
-          <div class="container mt-3"></div>
-          <div class="row">
-            {data.products.filter((product) => product.category === "Galletas").map((product) => (
-              <div class="col-md-6 col-lg-3">
-            <CardProduct 
-              id={product.id}
-              category={product.category}
-              sizes={product.sizes}
-              thumb_src={product.thumb_src}
-              full_description={product.full_description}
-              thumb_alt={product.thumb_alt}
-              color={product.color}
-              title={product.title}
-              price={product.price}
-              position="left"
-            />
-              </div>
-            ))}
-          </div>
-          
-          <div id="DTortas">
-            <h2>Tortas</h2>
-          </div>
-    
-    
-          <hr class="dark horizontal my-2" />
-    
-          <div class="container mt-3"></div>
-          <div class="row">
-            {data.products.filter((product) => product.category === "Tortas").map((product) => (
-              <div class="col-md-6 col-lg-3">
-            <CardProduct 
-              id={product.id}
-              category={product.category}
-              sizes={product.sizes}
-              full_description={product.full_description}
-              thumb_src={product.thumb_src}
-              thumb_alt={product.thumb_alt}
-              color={product.color}
-              title={product.title}
-              price={product.price}
-              position="left"
-            />
-              </div>
-            ))}
-          </div>
-          
-          <div id="DPostres">
-            <h2>Postres Tradicionales</h2>
-          </div>
-    
-          <hr class="dark horizontal my-2" />
-    
-          <div class="container mt-3"></div>
-          <div class="row">
-            {data.products.filter((product) => product.category === "Postres Tradicionales").map((product) => (
-              <div class="col-md-6 col-lg-3">
-            <CardProduct 
-              id={product.id}
-              category={product.category}
-              sizes={product.sizes}
-              full_description={product.full_description}
-  
-              thumb_src={product.thumb_src}
-              thumb_alt={product.thumb_alt}
-              color={product.color}
-              title={product.title}
-              price={product.price}
-              position="left"
-            />
-              </div>
-            ))}
-          </div>
-          
-        </div>
-    
-    
+      <Navbar />
+      <PromoSectionLarge 
+        title={"DeliPostres"}
+        full_description={data.products[0].full_description ?? ""}
+        pageHeaderBgImg={"../ImagesDeli/Generalportada.jpg"} 
+        pageHeaderMinVh="70vh"
+        pageHeaderRadius="0rem"
+      />
 
-    <!-- {data.categories.filter(category => category.title !== "Postres Tradicionales").map(category => (
-        <div class="col-md-6 col-lg-3">
-          <h3 class="mb-4">{category.title}</h3>
+      <div class="container my-3">
+        <div class="d-block text-center mb-5">
+        
+      
+        </div>
+        <div class="row mb-4">
+          <div class="d-block text-center mb-5">
+          <h3>Categorías</h3>
+
+          <a class="text-dark font-weight-bold">Elije Entre Nuestros Deliciosos Postres</a>
+          </div>
+          <div class="row justify-content-center mb-4" >
+
+          <div class="col-md-6 col-lg-3">
+          <a href="#DGalleta"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Galletasportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Galletas</h4><p class="text-white font-weight-bold mb-1">¡Degusta Nuestras Deliciosas Galletas!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0"&gt;</a></div></div></div></a>
+          </div><div class="col-md-6 col-lg-3">
+          <a href="#DTortas"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Tortaportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Tortas</h4><p class="text-white font-weight-bold mb-1">¡Chocolate, Vainilla y Otras Delicias!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0" &gt;</a></div></div></div></a>
+          </div><div class="col-md-6 col-lg-3">
+          <a href="#DPostres"><div class="card card-background align-items-start mb-4 mb-lg-0 undefined"><div class="full-background" style="background-image:url(/delipostres//ImagesDeli/Postresportada.jpg);background-size:cover"></div><div class="card-body text-center w-100 pt-8"><div class="d-block mt-10"><h4 class="text-white font-weight-bolder">Postres Tradicionales</h4><p class="text-white font-weight-bold mb-1">¡Ser Venezolano Nunca Había Sido Tan Delicioso!</p><a href="#" class="text-white text-sm font-weight-semibold mb-0" &gt;</a></div></div></div></a>
+          </div>
+          </div>
+
+
+
+      <PromoSectionLarge 
+        title="¡Promoción de la semana!"
+        full_description={data.products[4].full_description ?? ""}  
+        pageHeaderBgImg={"../ImagesDeli/Tortapiñata.jpg"} 
+        pageHeaderMinVh="70vh"
+        pageHeaderRadius="5rem"
+      /> <!-- Trae la data con "data.products y el numero dentro del cuadro determina cual producto trae-->
+
+      <div class="row">
+      
+      
+      <main>
+      
+        <div class="container mt-5">   
+          <div class="d-block text-center mb-2">
+    
           <div class="row">
-            <div class="col-12">
-              {data.products.filter(product => product.category === category.title).map(product => (
-                <CardProduct 
-                  thumb_src={product.thumb_src}
-                  thumb_alt={product.thumb_alt}
-                  color={product.color}
-                  title={product.title}
-                  price={product.price}
-                  position="left"
-                />
+            <h1 class="mb-4">Nuestros Productos</h5>
+              <div id="DGalleta">
+                <h2>Galletas</h2>
+              </div>
+        
+      
+            <hr class="dark horizontal my-2" />
+      
+            <div class="container mt-3"></div>
+            <div class="row">
+              {data.products.filter((product) => product.category === "Galletas").map((product) => (
+                <div class="col-md-6 col-lg-3">
+              <CardProduct 
+                id={product.id}
+                category={product.category}
+                sizes={product.sizes}
+                thumb_src={product.thumb_src}
+                full_description={product.full_description}
+                thumb_alt={product.thumb_alt}
+                color={product.color}
+                title={product.title}
+                price={product.price}
+                position="left"
+              />
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      ))} -->
-   
-        
-      </div>
-      
-      
-
-      
-      
-    </div>
-  
-    
-  <hr class="dark horizontal my-5" />
-  <div class="container">
-    <div class="left">
-      <div class="col-12">
-        <h3>Sobre Nosotros</h3>
-      
-        
-        <style>
-  .grande {
-    font-size: 24px; /* Tamaño de fuente personalizado */
-    /* Puedes ajustar el tamaño de fuente según tus preferencias */
-  }
-</style>
-
-<h5 class="pequeño">- En el corazón de Maracaibo, Delipostres comenzó hace más de cinco años como un sueño compartido por un grupo de amantes de la repostería. Desde entonces, hemos dedicado nuestro tiempo a endulzar los días de nuestra comunidad con una amplia variedad de postres, tortas y galletas que reflejan la rica tradición culinaria venezolana.</h5>
-
-<h5 class="pequeño">- En Delipostres, nuestra misión es crear momentos de alegría y conexión a través de nuestros deliciosos postres, tortas y galletas. Nos esforzamos por ofrecer productos de alta calidad que deleiten los sentidos y hagan que cada cliente se sienta especial.</h5>
-
-<h5 class="pequeño">- Compromiso con el cliente: Nuestros clientes son nuestra máxima prioridad, y nos comprometemos a ofrecer un ser servicio de calidad a nuestros apreciados clientes, que son aquellos que logran que toda esta fantasía hecha realidad sea posible.
-
-  <hr class="dark horizontal my-5" />
-
-
-        <div class="row mb-5">
-          <div class="d-block text-center mb-5">  
             
-        <h3>Somos DeliPostres</h3>
-        <a class="text-dark font-weight-bold" >Endulzando Tu Vida</a>
-        </div>
-        <div class="col-md-6">
-        <div class="card card-background align-items-start mb-4 mb-lg-0 h-100"><div class="full-background" style="background-image:url(/ImagesDeli/Tiad.jpeg);background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Chef Victoria Delliponti</h4><a class="text-white text-sm font-weight-semibold mb-0">Nuestra Dedicada Chef Principal Y La Cabeza De Esta Gran Familia </a></div></div></div></a>
-        </div>
-        <div class="col-md-6">
-        <div class="mb-4">
-        <div class="card card-background align-items-start mb-4 mb-lg-0 "><div class="full-background" style="background-image:url(/ImagesDeli/Cocina.webp");background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Donde Se Hace La Magia</h4><a class="text-white text-sm font-weight-semibold mb-0">Poniendo El Corazón En Cada Postre</a></div></div></div></a>
-        </div>
-        <div class>
-        <div class="card card-background align-items-start mb-4 mb-lg-0 "><div class="full-background" style="background-image:url(/ImagesDeli/Cliente.webp");background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Dulces Gustos</h4><a  class="text-white text-sm font-weight-semibold mb-0">Siendo Preferencia Para El Paladar De Nuestros Clientes</a></div></div></div></a>
-        </div>
-        </div>
-        </div>
-        <div class="d-block text-center mb-5">
-          
-          <button type="button" class="btn btn-dark w-auto" data-bs-toggle="modal" 
-          data-bs-target="#Mapa">Haz click aquí y consigue la ubicacion</button>
-          <div class="modal fade" id="Mapa" role="dialog" 
-          aria-labelledby="productModal-undefinedLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="card card-product">
-                        <div class="card-body d-block d-lg-flex p-4">
-                            <button type="button" class="btn-close text-dark position-absolute end-0 me-4" 
-                            data-bs-dismiss="modal" aria-label="Close">
-                            </button>
-                        <div class="w-100 w-lg-95 text-center left-padding-40">
-                            <div id="map" style="height: 500px;  width:100%; ">
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+            <div id="DTortas">
+              <h2>Tortas</h2>
+            </div>
+      
+      
+            <hr class="dark horizontal my-2" />
+      
+            <div class="container mt-3"></div>
+            <div class="row">
+              {data.products.filter((product) => product.category === "Tortas").map((product) => (
+                <div class="col-md-6 col-lg-3">
+              <CardProduct 
+                id={product.id}
+                category={product.category}
+                sizes={product.sizes}
+                full_description={product.full_description}
+                thumb_src={product.thumb_src}
+                thumb_alt={product.thumb_alt}
+                color={product.color}
+                title={product.title}
+                price={product.price}
+                position="left"
+              />
                 </div>
+              ))}
+            </div>
+            
+            <div id="DPostres">
+              <h2>Postres Tradicionales</h2>
+            </div>
+      
+            <hr class="dark horizontal my-2" />
+      
+            <div class="container mt-3"></div>
+            <div class="row">
+              {data.products.filter((product) => product.category === "Postres Tradicionales").map((product) => (
+                <div class="col-md-6 col-lg-3">
+              <CardProduct 
+                id={product.id}
+                category={product.category}
+                sizes={product.sizes}
+                full_description={product.full_description}
+    
+                thumb_src={product.thumb_src}
+                thumb_alt={product.thumb_alt}
+                color={product.color}
+                title={product.title}
+                price={product.price}
+                position="left"
+              />
+                </div>
+              ))}
+            </div>
+            
+          </div>
+      
+      
+
+        <!-- {data.categories.filter(category => category.title !== "Postres Tradicionales").map(category => (
+            <div class="col-md-6 col-lg-3">
+              <h3 class="mb-4">{category.title}</h3>
+              <div class="row">
+                <div class="col-12">
+                  {data.products.filter(product => product.category === category.title).map(product => (
+                    <CardProduct 
+                      thumb_src={product.thumb_src}
+                      thumb_alt={product.thumb_alt}
+                      color={product.color}
+                      title={product.title}
+                      price={product.price}
+                      position="left"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))} -->
+    
+          
+        </div>
+        
+        
+
+        
+        
+    
+            
+          <hr class="dark horizontal my-5" />
+          <div class="container">
+            <div class="left">
+              <div class="col-12">
+                <h3>Sobre Nosotros</h3>
+              
+          
+          <style>
+            .grande {
+              font-size: 24px; /* Tamaño de fuente personalizado */
+              /* Puedes ajustar el tamaño de fuente según tus preferencias */
+            }
+          </style>
+
+          <h5 class="pequeño">- En el corazón de Maracaibo, Delipostres comenzó hace más de cinco años como un sueño compartido por un grupo de amantes de la repostería. Desde entonces, hemos dedicado nuestro tiempo a endulzar los días de nuestra comunidad con una amplia variedad de postres, tortas y galletas que reflejan la rica tradición culinaria venezolana.</h5>
+
+          <h5 class="pequeño">- En Delipostres, nuestra misión es crear momentos de alegría y conexión a través de nuestros deliciosos postres, tortas y galletas. Nos esforzamos por ofrecer productos de alta calidad que deleiten los sentidos y hagan que cada cliente se sienta especial.</h5>
+
+          <h5 class="pequeño">- Compromiso con el cliente: Nuestros clientes son nuestra máxima prioridad, y nos comprometemos a ofrecer un ser servicio de calidad a nuestros apreciados clientes, que son aquellos que logran que toda esta fantasía hecha realidad sea posible.
+
+            <hr class="dark horizontal my-5" />
+
+
+          <div class="row mb-5">
+            <div class="d-block text-center mb-5">  
+              
+          <h3>Somos DeliPostres</h3>
+          <a class="text-dark font-weight-bold" >Endulzando Tu Vida</a>
+          </div>
+          <div class="col-md-6">
+          <div class="card card-background align-items-start mb-4 mb-lg-0 h-100"><div class="full-background" style="background-image:url(/ImagesDeli/Tiad.jpeg);background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Chef Victoria Delliponti</h4><a class="text-white text-sm font-weight-semibold mb-0">Nuestra Dedicada Chef Principal Y La Cabeza De Esta Gran Familia </a></div></div></div></a>
+          </div>
+          <div class="col-md-6">
+          <div class="mb-4">
+          <div class="card card-background align-items-start mb-4 mb-lg-0 "><div class="full-background" style="background-image:url(/ImagesDeli/Cocina.webp");background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Donde Se Hace La Magia</h4><a class="text-white text-sm font-weight-semibold mb-0">Poniendo El Corazón En Cada Postre</a></div></div></div></a>
+          </div>
+          <div class>
+          <div class="card card-background align-items-start mb-4 mb-lg-0 "><div class="full-background" style="background-image:url(/ImagesDeli/Cliente.webp");background-size:cover"></div><div class="card-body align-items-end d-flex"><div class="d-block mt-10"><p class="text-white font-weight-bold mb-1"></p><h4 class="text-white font-weight-bolder">Dulces Gustos</h4><a  class="text-white text-sm font-weight-semibold mb-0">Siendo Preferencia Para El Paladar De Nuestros Clientes</a></div></div></div></a>
+          </div>
+          </div>
+          </div>
+          <div class="d-block text-center mb-5">
+            
+            <button type="button" class="btn btn-dark w-auto" data-bs-toggle="modal" 
+            data-bs-target="#Mapa">Haz click aquí y consigue la ubicacion</button>
+            <div class="modal fade" id="Mapa" role="dialog" 
+            aria-labelledby="productModal-undefinedLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                  <div class="modal-content">
+                      <div class="card card-product">
+                          <div class="card-body d-block d-lg-flex p-4">
+                              <button type="button" class="btn-close text-dark position-absolute end-0 me-4" 
+                              data-bs-dismiss="modal" aria-label="Close">
+                              </button>
+                          <div class="w-100 w-lg-95 text-center left-padding-40">
+                              <div id="map" style="height: 500px;  width:100%; ">
+                              </div>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
           </div>
-        </div>
-        <script src="../api/script"></script>
-        <script is:inline >
-        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-            key: "AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik",
-            // Add other bootstrap parameters as needed, using camel case.
-            // Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
-          });</script>
+          <script src="../api/script"></script>
+          <script is:inline >
+          (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+              key: "AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik",
+              // Add other bootstrap parameters as needed, using camel case.
+              // Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
+            });</script>
 
 
-  <Footer />
+      <Footer />
 
-  </div>
-</main>
+      </div>
+    </main>
+  </CartProvider>
