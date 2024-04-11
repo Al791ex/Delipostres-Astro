@@ -10,4 +10,7 @@ export default defineConfig({
   })],
   site: 'https://creativetimofficial.github.io',
   base: '/delipostres'
+  integrations: [react()],
+  site: 'https://Al791ex.github.io',
+  base: '/Delipostres-Astro',
 });

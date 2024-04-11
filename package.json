@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@astrojs/react": "^1.2.1",
@@ -26,6 +27,7 @@
     "react-paystack": "^5.0.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "sass": "^1.55.0"
   }
 }

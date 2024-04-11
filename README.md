@@ -21,3 +21,8 @@ RESTFUL API URLS:
 
 documentación en:
 https://www.creative-tim.com/learning-lab/astro/overview/astro-ecommerce
+
+Antes de hacer commit
+
+    npm run build (todo va a la carpeta dist)
+    npm run deploy
